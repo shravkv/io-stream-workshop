@@ -1,0 +1,97 @@
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| address_book_service |
+| amazon               |
+| information_schema   |
+| mysql                |
+| payroll_service      |
+| performance_schema   |
+| pets                 |
+| sakila               |
+| sys                  |
+| testdb               |
+| world                |
++----------------------+
+11 rows in set (1.58 sec)
+
+mysql> use amazon;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| amazon     |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table employees
+    -> (emp_id int,
+    -> emp_firstName varchar(50),
+    -> emp_lastName varchar(100),
+    -> emp_emailid varchar(50),
+    -> emp_phoneNumber long);
+Query OK, 0 rows affected (3.95 sec)
+
+mysql> describe employees;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int          | YES  |     | NULL    |       |
+| emp_firstName   | varchar(50)  | YES  |     | NULL    |       |
+| emp_lastName    | varchar(100) | YES  |     | NULL    |       |
+| emp_emailid     | varchar(50)  | YES  |     | NULL    |       |
+| emp_phoneNumber | mediumtext   | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.29 sec)
+
+mysql> insert into employees( emp_id, emp_firstName, emp_lastName, emp_emailid, emp_phonenumber)values
+    -> (1,'Sahil','Pawar','sahpa@gmail.com','331313224'),
+    -> (2,'Shravan','Kumar','skhra@gmam.com','231313224'),
+    -> (3,'Vishangi','Dabir','visha@gmam.com','214533224');
+Query OK, 3 rows affected (0.82 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from employees;
++--------+---------------+--------------+-----------------+-----------------+
+| emp_id | emp_firstName | emp_lastName | emp_emailid     | emp_phoneNumber |
++--------+---------------+--------------+-----------------+-----------------+
+|      1 | Sahil         | Pawar        | sahpa@gmail.com | 331313224       |
+|      2 | Shravan       | Kumar        | skhra@gmam.com  | 231313224       |
+|      3 | Vishangi      | Dabir        | visha@gmam.com  | 214533224       |
++--------+---------------+--------------+-----------------+-----------------+
+3 rows in set (0.11 sec)
+
+mysql> create table products
+    -> (product_id int,
+    -> product_descr varchar(150),
+    -> product_price long,
+    -> product_qty int);
+Query OK, 0 rows affected (0.80 sec)
+
+mysql> describe products;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| product_id    | int          | YES  |     | NULL    |       |
+| product_descr | varchar(150) | YES  |     | NULL    |       |
+| product_price | mediumtext   | YES  |     | NULL    |       |
+| product_qty   | int          | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> insert into products( product_id,product_descr,product_price,product_qty)values
+    -> (1,'Mobile',10000,5),
+    -> (2,'Home',25000,10);
+Query OK, 2 rows affected (0.23 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++------------+---------------+---------------+-------------+
+| product_id | product_descr | product_price | product_qty |
++------------+---------------+---------------+-------------+
+|          1 | Mobile        | 10000         |           5 |
+|          2 | Home          | 25000         |          10 |
++------------+---------------+---------------+-------------+
+2 rows in set (0.01 sec)
